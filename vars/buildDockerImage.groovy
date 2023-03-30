@@ -1,6 +1,6 @@
 
 
-def call() {
+def call(FULL_IMAGE_NAME) {
     echo "building the docker image: ${FULL_IMAGE_NAME}"
     sh "cd /var/jenkins_home/workspace/${JOB_NAME} && docker build -t ${FULL_IMAGE_NAME} ."
     // or replace ${PIPELINE_NAME} with implicit variable JOB_NAME.
