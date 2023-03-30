@@ -1,12 +1,9 @@
 
 
 def call() {
-    echo "Building the docker image..."
-
-    // change directory to project dir where Dockerfile exit && build the image
+    echo "building the docker image..."
     sh "cd /var/jenkins_home/workspace/${JOB_NAME} && docker build -t ${FULL_IMAGE_NAME} ."
-
-    echo"Image ${FULL_IMAGE_NAME} built successfully."
+    // or replace ${PIPELINE_NAME} with implicit variable JOB_NAME.
 
     // flag to determine whether the build goes as expected or not.
     IS_IMAGE_BUILT = true
