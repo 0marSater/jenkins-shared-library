@@ -1,6 +1,10 @@
 
 def call(){
     echo "login to docker hub..."
-    echo '$DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+    withCredentials([usernamePassword(credentialsId: 'docker-hub-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+        sh "echo $PASS | docker login -u $USER --password-stdin"
+    }
 }
+
+
 
